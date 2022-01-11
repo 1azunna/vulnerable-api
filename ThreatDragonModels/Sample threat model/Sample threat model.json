@@ -1,0 +1,12 @@
+{
+  "summary": {
+    "title": "Sample threat model",
+    "owner": "Azunna",
+    "description": "A sample vulnerable app"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "reviewer": "Azunna"
+  }
+}

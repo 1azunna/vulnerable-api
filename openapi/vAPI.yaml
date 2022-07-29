@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: defaultTitle
-  description: defaultDescription
+  title: Vulnerable API
+  description: Vulnerable API
   version: '0.1'
 paths:
   /:
@@ -11,11 +11,11 @@ paths:
       operationId: get_root
       responses:
         '200':
-          description: Auto generated using Swagger Inspector
+          description: API status results
           content:
-            application/json; charset=UTF-8:
+            'application/json':
               schema:
-                type: string
+                type: object
               examples: {}
   /tokens:
     post:
@@ -41,14 +41,30 @@ paths:
         '200':
           description: Authentication response
           content:
-            application/json; charset=UTF-8:
+            'application/json':
               schema:
                 type: string
               examples: {}
         '400':
           description: Invalid input
+          content:
+            'application/problem+json':
+              schema:
+                type: string
         '401':
           description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                type: string
+              examples:
+                '0':
+                  value: |-
+                    {
+                      "error": {
+                        "message": "username  not found"
+                      }
+                    }
   /user/{user}:
     get:
       x-openapi-router-controller: vAPI
@@ -88,12 +104,28 @@ paths:
                     not found"}}}
         '400':
           description: Invalid input
+          content:
+            'application/problem+json':
+              schema:
+                type: string
         '401':
           description: Unauthenticated
+          content:
+            'application/json':
+              schema:
+                type: string
         '403':
           description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                type: string
         '404':
           description: Not found
+          content:
+            'application/json':
+              schema:
+                type: string
   /user:
     post:
       description: Auto generated using Swagger Inspector
@@ -122,7 +154,7 @@ paths:
         '200':
           description: Auto generated using Swagger Inspector
           content:
-            application/json:
+            'application/json':
               schema:
                 type: object
                 properties:
@@ -140,10 +172,22 @@ paths:
                     {"response": {"error": {"message": "must provide valid admin token"}}}
         '400':
           description: Invalid input
+          content:
+            'application/json':
+              schema:
+                type: string
         '401':
           description: Unauthenticated
+          content:
+            'application/json':
+              schema:
+                type: string
         '403':
           description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                type: string
   /uptime:
     get:
       x-openapi-router-controller: vAPI
@@ -153,7 +197,7 @@ paths:
         '200':
           description: Auto generated using Swagger Inspector
           content:
-            application/json; charset=UTF-8:
+            'application/json':
               schema:
                 type: string
               examples: {}
@@ -172,12 +216,16 @@ paths:
         '200':
           description: Auto generated using Swagger Inspector
           content:
-            application/json; charset=UTF-8:
+            'application/json':
               schema:
                 type: string
               examples: {}
         '404':
           description: Not found
+          content:
+            'application/json':
+              schema:
+                type: string
   /widget:
     post:
       description: Make widget reservation
@@ -205,13 +253,25 @@ paths:
         '200':
           description: Successful widget reservation
           content:
-            application/json; charset=UTF-8:
+            'application/json':
               schema:
                 type: string
               examples: {}
         '400':
           description: Invalid input
+          content:
+            'application/problem+json':
+              schema:
+                type: string
         '401':
           description: Unauthenticated
+          content:
+            'application/json':
+              schema:
+                type: string
         '403':
           description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                type: string
